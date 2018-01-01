@@ -1,0 +1,219 @@
+
+
+/* a {
+  color: #00B7FF;
+} */
+*{
+  color: #383D3B;
+}
+
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Crimson Text', serif; */
+
+header{
+  max-width: 1024px;
+  margin: 35px auto 0;
+}
+
+.header-bar{
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.header-bar a{
+  text-decoration: none;
+  margin-right: 15px;
+}
+.header-bar a:hover{
+  text-decoration: underline;
+}
+/* .header-bar .fb-link{
+  margin-left: 15px;
+} */
+.fb-link i{
+  color: #EE4266;
+}
+.fb-link:hover i{
+  color: inherit;
+}
+.logo{
+  border-right: 1px solid rgb(163, 163, 163);
+  padding: 0 5px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  width: 113px;
+}
+.media-boxes{
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 19px;
+  height: 503px;
+  width: 100%;
+}
+.media-boxes > div{
+  box-sizing: border-box;
+  transition: border-bottom 0.3s;
+  position: relative;
+}
+.media-boxes > div:hover{
+  border-bottom: 5px solid #EE4266;
+  background: #EE4266;
+}
+.color-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background: linear-gradient(transparent, 60%, #383D3B);
+  opacity: .8;
+  transition:  background .3s, opacity .3s;
+}
+.color-overlay:hover{
+  background: linear-gradient(transparent, 70%, #383D3B);
+  /* background: #383D3B; */
+  opacity: 1;
+}
+#box1{
+  grid-row: 1/3;
+}
+.title{
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  color: white;
+  margin: 0;
+}
+
+.call-to-action{
+  max-width: 950px;
+  margin: 65px auto;
+  font-family: 'Montserrat', sans-serif;
+  /* display: flex; */
+  align-items: flex-end;
+}
+.call-to-action h1{
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+  display: inline;
+}
+.call-to-action .fb-like{
+  margin: 0 0 15px 25px;
+  transform: scale(1.3);
+}
+.events-container{
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.events-container h1{
+  font-size: 30px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+.events-container ul{
+  padding-left: 100px;
+  margin-top: 37px;
+}
+.events-container li{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  align-items: baseline;
+}
+.events-container a{
+  margin-left: auto;
+}
+.events-container p{
+  margin: 0;
+}
+.events-container div{
+  margin-right: 25px;
+}
+.events-container .date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.events-container .date p:nth-child(2){
+  font-size: 30px;
+}
+.events-container .date p:nth-child(1){
+  font-weight: 400;
+}
+.events-container .event-titles p:nth-child(1){
+  font-weight: 700;
+}
+.events-container .event-extra-info p{
+  font-weight: 400;
+}
+.events-container a{
+  color: white;
+  font-size: 15px;
+  background: #EE4266;
+  padding: 3px 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.events-container a:hover{
+  background: #383D3B;
+}
+
+.gallery{
+  height: 124px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1024px;
+  margin: 80px auto;
+}
+.gallery .img{
+  height: 124px;
+  width: 124px;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+.gallery .img:hover{
+  height: 124px;
+  width: 124px;
+}
+.color-overlay2 p{
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+.color-overlay2{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #EE4266;
+  opacity: 0;
+  transition: opacity .3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.color-overlay2:hover{
+  /* background: linear-gradient(transparent, 70%, #383D3B); */
+  /* background: #383D3B; */
+  opacity: .8;
+}
+/* https://www.one.org/us/ */

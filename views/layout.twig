@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Educated Angles</title>
+    <meta name="description" content="{{description}}">
+    <link rel="canonical" href="https://educatedangles.org">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Montserrat:400,500,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+  </head>
+  <body>
+    <header>
+      <div class='header-bar'>
+        <div class='logo'><img src='images/logo.png'></div>
+        <div class='header-links'>
+        <a href='#'>Upcoming Events</a>
+        <a href='#'>Volunteer Opportunities</a>
+        <a href='#'>Our Story</a>
+        <a href='#'>Partnerss</a>
+        </div>
+        <a href='#' class='fb-link'><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      </div>
+      <div class='header-bar'>
+        <div class='logo'><img src='images/my_tutor_logo.png'></div>
+        <div class='header-links'>
+        <a href='#'>Consulting</a>
+        <a href='#'>Internships</a>
+        </div>
+        <a href='#' class='fb-link'><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      </div>
+    </header>
+    <div class='media-boxes'>
+      <div id='box1' style='background-image: url(images/plane.png)' >
+        <div class="color-overlay"></div>
+        <p class='title'>Helping folks in Houston</p>
+      </div>
+      <div id='box2' style='background-image: url(images/video_thumb.png)'>
+        <div class="color-overlay"></div>
+        <p class='title'>2017 Summery Video</p>
+      </div>
+      <div id='box3' style='background-image: url(images/boxes.png)'>
+        <div class="color-overlay"></div>
+        <p class='title'>Get in touch</p>
+      </div>
+    </div>
+    <div class='call-to-action'>
+      <h1>Join Educated Angles helping children and young adults in central Texas by liking us on fackbook</h1>
+      <div class="fb-like" data-href="https://www.facebook.com/educatedangels" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>  
+    </div>
+    <div class='events-container'>
+      <h1>Upcoming Events</h1>
+      <ul>
+        <li>
+          <div class='date'>
+            <p>Jan</p>
+            <p>10</p>
+          </div>
+          <div class='event-titles'>
+            <p>Membership Drive</p>
+            <p>Wed 6 AM by Educated Angles</p>
+          </div>
+          <div class='event-extra-info'>
+            <p>Hallmark Lanes</p>
+            <p>Killeen, TX</p>
+          </div>
+          <a href='#'>Learn More</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class='gallery'>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+    </div>
+
+
+
+
+
+    {% block body %}{% endblock %}
+
+
+
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '801485336656969',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+          
+        FB.AppEvents.logPageView();   
+          
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+  </body>
+</html>
+
