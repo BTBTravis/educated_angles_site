@@ -6,7 +6,10 @@
 *{
   color: #383D3B;
 }
-
+body, html{
+  margin: 0;
+  padding: 0;
+}
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Crimson Text', serif; */
 
@@ -217,3 +220,67 @@ header{
   opacity: .8;
 }
 /* https://www.one.org/us/ */
+.story-wrapper{
+  display: grid;
+  grid-template-columns: 1fr 682px 341px 1fr;
+  grid-template-rows: 145px 145px auto;
+  margin-top: 150px;
+}
+.story-bg{
+  grid-column: 1 / span 4;
+  grid-row: 1 / span 2;
+}
+.story-sidebar{
+  grid-column: 3 / span 1;
+  grid-row: 3 / span 1;
+}
+.story{
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 2;
+  background-color: white;
+  padding: 20px;
+}
+.story-wrapper p{
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
+}
+.story-wrapper h1{
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+.story-wrapper h2{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer{
+  background-color: #7C7C7C;
+  height: 95px;
+  margin-top: 150px;
+}
+footer .logo{
+  border: 0;
+}
+footer > div{
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+footer .logo{
+  margin: 0;
+}
+footer > div > div{
+  display: flex;
+}
+/* footer .logo{
+  display: flex;
+} */
+footer strong, footer p{
+  color: white;
+}
