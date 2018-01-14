@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Educated Angles</title>
-    <meta name="description" content="{{description}}">
+    <meta name="description" content="{{discription}}">
     <link rel="canonical" href="https://educatedangles.org">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Montserrat:400,500,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
@@ -13,10 +13,10 @@
       <div class='header-bar'>
         <div class='logo'><img src='images/logo.png'></div>
         <div class='header-links'>
-        <a href='#'>Upcoming Events</a>
-        <a href='#'>Volunteer Opportunities</a>
-        <a href='#'>Our Story</a>
-        <a href='#'>Partnerss</a>
+        <a href='#upcoming_events'>Upcoming Events</a>
+        <a href='#volunteer_opportunities'>Volunteer Opportunities</a>
+        <a href='#our_story'>Our Story</a>
+        <a href='#partners'>Partners</a>
         </div>
         <a href='#' class='fb-link'><i class="fa fa-facebook" aria-hidden="true"></i></a>
       </div>
@@ -48,7 +48,7 @@
       <div class="fb-like" data-href="https://www.facebook.com/educatedangels" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>  
     </div>
     <div class='events-container'>
-      <h1>Upcoming Events</h1>
+      <h1 id='upcoming_events'>Upcoming Events</h1>
       <ul>
         <li>
           <div class='date'>
@@ -79,7 +79,7 @@
     </div>
 
     <div class='events-container'>
-      <h1>Volunteer Opportunities</h1>
+      <h1 id='volunteer_opportunities'>Volunteer Opportunities</h1>
       <ul>
         <li>
           <div class='date'>
@@ -101,18 +101,17 @@
 
     <div class='story-wrapper'>
       <div class='story-bg'  style='background-image: url("images/ppl_bg.png")'></div>
-      <div class='story'>
-        <h1>Our Story</h1>
-        <p>ONE is a campaigning and advocacy organization of more than eight million people around the world taking action to end extreme poverty and preventable disease, particularly in Africa.
-We believe the fight against poverty isn’t about charity, but about justice and equality.
-Whether lobbying political leaders in world capitals or running cutting-edge grassroots campaigns, ONE pressures governments to do more to fight AIDS and other preventable, treatable diseases in the poorest places on the planet, to empower small-holder farmers, to expand access to energy, and to combat corruption so governments are accountable to their citizens. Cofounded by Bono and other activists, ONE is strictly nonpartisan.</p>
-        <h1>Get in touch</h1>
-        <p><strong>Phone:</strong> 254-462-7712</p>
-        <p><strong>Email:</strong> educatedangles2012@gmail.com</p>
-        <h1>Partners</h1>
-      </div>
+      <div class='story'>{{story1}}</div>
       <div class='story-sidebar'>
         <h2>Some of our proudest accomplishments include:</h2>
+      </div>
+    </div>
+
+    <div class='story-wrapper'>
+      <div class='story-bg'  style='background-image: url("images/classroom.png")'></div>
+      <div class='story'>{{story2}}</div>
+      <div class='story-sidebar'>
+        <h2>Our interns from our programs have gone on to:</h2>
       </div>
     </div>
 

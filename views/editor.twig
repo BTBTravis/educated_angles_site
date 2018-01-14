@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Editor</title>
+    <title>Educated Angles Site Editor</title>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Montserrat:400,500,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+    <link rel='stylesheet' href='/stylesheets/quill.snow.css' />
 </head>
-<body>
-    <h1>Editor</h1>
+<body class='editor'>
+    <header>
+        <h1>Educated Angles Site Editor</h1>
+        <button class='btn' data-save>Save<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i></button>
+    </header>
+    <div class='editor-wrapper'>
+    {% for field in fields %}
+        <div class='card'>
+            <div class='card-title-bar'>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <p>Editable Field - {{ field.title }}</p>
+            </div>
+            <div id='{{ field.title }}' data-field='{{field|json_encode()}}' ></div>
+        </div>
+    {% endfor %}
+    </div>
     <script type='text/javascript' src='javascripts/editor.bundle.js'></script>
 </body>
 </html>

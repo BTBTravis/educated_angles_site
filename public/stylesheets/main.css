@@ -284,3 +284,82 @@ footer > div > div{
 footer strong, footer p{
   color: white;
 }
+
+
+
+
+/* EDITOR */
+.editor{
+  background-color: #ecf0f5;
+}
+.editor header{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  padding: 0 calc((100% - 1024px 8) / 2);
+  align-items: center;
+  color: white;
+  background-color: #3c8dbc;
+  max-width: initial;
+  margin: 0;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.editor header h1{
+  margin: 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 300;
+}
+.editor h1, .editor p{
+  font-family: 'Open Sans', sans-serif;
+}
+.editor .card{
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  padding: 20px;
+}
+.editor-wrapper{
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.card-title-bar{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.card-title-bar p{
+  margin: 0 0 0 10px;
+}
+.editor .btn{
+  font-size: 16px;
+  border-radius: 3px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  background: #424242;
+  border: 0;
+  font-weight: 600;
+  opacity: .33;
+  transition: opacity .5s;
+}
+.editor .btn.needssave{
+  background: #00a65a;
+  opacity: 1;
+}
+.editor .btn i{
+  display: none;
+}
+.editor .btn.updateing i{
+  display: initial;
+  color: white;
+  font-size: 18px;
+  margin: 0 3px;
+}

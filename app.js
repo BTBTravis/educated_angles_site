@@ -8,6 +8,54 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var editorController = require('./routes/editor_controller');
 // var users = require('./routes/users');
+// database
+var Datastore = require('nedb');
+var db = new Datastore({ filename: './dbs/educatedangles' });
+// db.loadDatabase(function (err) {    // Callback is optional
+//   // Now commands will be executed
+// });
+db.loadDatabase(function (err) { 
+  // def req fields
+  var reqFields = [
+    {
+      title: 'story1',
+      type: 'fullHTML'
+    },
+    {
+      title: 'discription',
+      type: 'text'
+    },
+    {
+      title: 'accomplishment_1',
+      type: 'text'
+    },
+    {
+      title: 'accomplishment_2',
+      type: 'text'
+    },
+    {
+      title: 'accomplishment_3',
+      type: 'text'
+    },
+    {
+      title: 'story2',
+      type: 'fullHTML'
+    }
+  ];
+  // check for req fields and add them if needed
+  reqFields.map(function (field) {
+    db.find({ title: field.title }, function (err, docs) {
+      if (docs.length < 1) {
+        db.insert(field);
+      }
+    });
+  });
+});
+
+var attachDB = function (req, res, next) {
+  req.db = db;
+  next();
+};
 
 var app = express();
 
@@ -22,6 +70,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(attachDB);
 
 app.use('/', index);
 app.use('/editor', index);

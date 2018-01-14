@@ -2,14 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.post('/', function (req, res, next) {
-  console.log(req);
-  // res.send("Posting to edit endpt");
-  var test = ['test', 'test'];
-  res.json(test);
+router.put('/', function (req, res, next) {
+  req.body.map(function (field) {
+    req.db.update({ title: field.title }, { $set: { delta: field.delta, html: field.html } }, { multi: true }, function (err, numReplaced) {
+      // TODO: add error handling
+    });
+  });
+  res.json({ status: 200 });
 });
-// router.get('/', function (req, res, next) {
-//   res.send("HITTING THE EDIT END PT");
-// });
-
 module.exports = router;
