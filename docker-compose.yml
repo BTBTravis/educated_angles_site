@@ -1,0 +1,7 @@
+version: "3"
+services:
+  educatedangles:
+    image: btbtravis/educatedangles:latest
+    ports:
+      - "3001:3000"
+    env_file: .env
