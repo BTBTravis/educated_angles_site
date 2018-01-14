@@ -116,4 +116,15 @@ var savSub = events.subscribe('needsave', function(title) {
   document.querySelector('*[data-save]').classList.add('needssave');
 });
 
+document.querySelector('*[data-update]').addEventListener('click', function () {
+  document.querySelector('*[data-update]').classList.add('updateing');
+  fetch ('/edit/update', {
+    method: 'get'
+  })
+  .then(()=> {
+    console.log('changes saved');
+    document.querySelector('*[data-update]').classList.remove('updateing');
+  });
+});
+
 console.log({editableFields: editableFields});

@@ -39,8 +39,10 @@
         <p class='title'>2017 Summery Video</p>
       </div>
       <div id='box3' style='background-image: url(images/boxes.png)'>
+      <a href='#get_in_touch'>
         <div class="color-overlay"></div>
         <p class='title'>Get in touch</p>
+      </a>
       </div>
     </div>
     <div class='call-to-action'>
@@ -50,52 +52,56 @@
     <div class='events-container'>
       <h1 id='upcoming_events'>Upcoming Events</h1>
       <ul>
+        {% for event in facebook %}
         <li>
           <div class='date'>
-            <p>Jan</p>
-            <p>10</p>
+            <p>{{event.month}}</p>
+            <p>{{event.day}}</p>
           </div>
           <div class='event-titles'>
-            <p>Membership Drive</p>
-            <p>Wed 6 AM by Educated Angles</p>
+            <p>{{event.name}}</p>
+            <p>by Educated Angles</p>
           </div>
           <div class='event-extra-info'>
-            <p>Hallmark Lanes</p>
-            <p>Killeen, TX</p>
+          {% if event.place.location %}
+            <p>{{event.place.name}}</p>
+            <p>{{event.place.location.city}}, {{event.place.location.state}}</p>
+          {% endif %}
           </div>
-          <a href='#'>Learn More</a>
+          <a href='https://www.facebook.com/events/{{event.id}}'>Learn More</a>
         </li>
+      {% endfor %}
       </ul>
     </div>
 
     <div class='gallery'>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
-      <a href='#'><div class='img' style='background-image: url("images/boxes.png")'><div class="color-overlay2"><p>View</p></div></div></a>
+      {% for photo in photos %}
+      <a href='https://www.facebook.com/educatedangels/photos/{{photo.id}}'><div class='img' style='background-image: url("{{photo.s3url}}")'><div class="color-overlay2"><p>View</p></div></div></a>
+      {% endfor %}
     </div>
 
     <div class='events-container'>
       <h1 id='volunteer_opportunities'>Volunteer Opportunities</h1>
       <ul>
+      {% for event in signupgenius %}
         <li>
           <div class='date'>
-            <p>Jan</p>
-            <p>10</p>
+            <p>{{event.month}}</p>
+            <p>{{event.day}}</p>
           </div>
           <div class='event-titles'>
-            <p>Membership Drive</p>
-            <p>Wed 6 AM by Educated Angles</p>
+            <p>{{event.title}}</p>
+            <p>by {{event.group}}</p>
           </div>
           <div class='event-extra-info'>
-            <p>Hallmark Lanes</p>
-            <p>Killeen, TX</p>
+          {% if event.place.location %}
+            <p>{{event.place.name}}</p>
+            <p>{{event.place.location.city}}, {{event.place.location.state}}</p>
+          {% endif %}
           </div>
-          <a href='#'>Learn More</a>
+          <a href='{{event.signupurl}}'>Learn More</a>
         </li>
+      {% endfor %}
       </ul>
     </div>
 
@@ -104,6 +110,7 @@
       <div class='story'>{{story1}}</div>
       <div class='story-sidebar'>
         <h2>Some of our proudest accomplishments include:</h2>
+        {{accomplishments}}
       </div>
     </div>
 
@@ -112,6 +119,7 @@
       <div class='story'>{{story2}}</div>
       <div class='story-sidebar'>
         <h2>Our interns from our programs have gone on to:</h2>
+        {{students_went_on}}
       </div>
     </div>
 

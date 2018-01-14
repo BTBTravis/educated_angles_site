@@ -11,6 +11,10 @@ var editorController = require('./routes/editor_controller');
 // database
 var Datastore = require('nedb');
 var db = new Datastore({ filename: './dbs/educatedangles' });
+var eventdb = new Datastore({ filename: './dbs/events' });
+eventdb.loadDatabase();
+var photosdb = new Datastore({ filename: './dbs/photos' });
+photosdb.loadDatabase();
 // db.loadDatabase(function (err) {    // Callback is optional
 //   // Now commands will be executed
 // });
@@ -18,27 +22,23 @@ db.loadDatabase(function (err) {
   // def req fields
   var reqFields = [
     {
-      title: 'story1',
-      type: 'fullHTML'
-    },
-    {
       title: 'discription',
       type: 'text'
     },
     {
-      title: 'accomplishment_1',
-      type: 'text'
+      title: 'story1',
+      type: 'fullHTML'
     },
     {
-      title: 'accomplishment_2',
-      type: 'text'
-    },
-    {
-      title: 'accomplishment_3',
-      type: 'text'
+      title: 'accomplishments',
+      type: 'fullHTML'
     },
     {
       title: 'story2',
+      type: 'fullHTML'
+    },
+    {
+      title: 'students_went_on',
       type: 'fullHTML'
     }
   ];
@@ -52,11 +52,16 @@ db.loadDatabase(function (err) {
   });
 });
 
-var attachDB = function (req, res, next) {
-  req.db = db;
-  next();
+// var attachDB = function (req, res, next) {
+//   req.db = db;
+//   next();
+// };
+var attachDB = function (name, dbOBJ) {
+  return function (req, res, next) {
+    req[name] = dbOBJ;
+    next();
+  };
 };
-
 var app = express();
 
 // view engine setup
@@ -70,8 +75,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(attachDB);
-
+app.use(attachDB('db', db));
+app.use(attachDB('eventdb', eventdb));
+app.use(attachDB('photosdb', photosdb));
 app.use('/', index);
 app.use('/editor', index);
 app.use('/edit', editorController);
