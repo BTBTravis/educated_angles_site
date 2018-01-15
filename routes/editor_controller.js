@@ -1,4 +1,5 @@
 var express = require('express');
+// require('dotenv').config();
 var axios = require('axios');
 var moment = require('moment');
 var router = express.Router();
@@ -68,20 +69,14 @@ router.get('/update', function (req, res, next) {
         responseType: 'stream'
       }).then(function (response) {
         return new Promise((resolve, reject) => {
-          var params = {Bucket: 'educated-angles', Key: photo.id, Body: response.data};
+          var params = {Bucket: 'educated-angles', Key: photo.id, Body: response.data, ContentType: 'image/jpeg'};
           s3.upload(params, function(err, data) {
             if (err) reject(err);
             resolve(data);
           });
         });
       }).then(function (data) {
-        return new Promise((resolve, reject) => {
-          var urlParams = {Bucket: 'educated-angles', Key: photo.id};
-          s3.getSignedUrl('getObject', urlParams, function (err, url) {
-            if (err) reject(err);
-            resolve({ s3url: url, id: photo.id, fburl: photo.source, created_time: photo.created_time });
-          });
-        });
+        return { s3url: 'https://educated-angles.s3.us-west-2.amazonaws.com/' + photo.id, id: photo.id, fburl: photo.source, created_time: photo.created_time };
       })
       .then(function (imgOBJ) {
         imgOBJ.created_unix = moment(imgOBJ.created_time).format('X');
