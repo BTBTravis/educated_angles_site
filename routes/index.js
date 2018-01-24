@@ -5,11 +5,26 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var getCMSData = new Promise((resolve, reject) => {
     req.db.find({}, function (err, docs) {
-      docs = docs.reduce(function (obj, doc) {
+      let htmls = docs.reduce(function (obj, doc) {
         obj[doc.title] = doc.html;
         return obj;
       }, {});
-      resolve(docs);
+      let h1s = docs.reduce(function (arr, doc) {
+        // var matches = doc.html.match(/h1 id="([^"]+)/g);
+        var titles = [];
+        var regex1 = RegExp('h1 id="([^"]+)">([^<]+)','g');
+        var matches;
+        while ((matches = regex1.exec(doc.html)) !== null) {
+          titles.push([matches[1], matches[2]]);
+        }
+        // console.log({matches: matches});
+        // return titles.concat(arr);
+        return arr.concat(titles);
+      }, []);
+      h1s.unshift(['volunteer_opportunities', 'Volunteer Opportunities']);
+      h1s.unshift(['upcoming_events', 'Upcoming Events']);
+      console.log({h1s: h1s});
+      resolve([htmls, h1s]);
     });
   });
   var getEvents = new Promise((resolve, reject) => {
@@ -28,7 +43,8 @@ router.get('/', function(req, res, next) {
     });
   });
   Promise.all([getCMSData, getEvents, getFacebookEvents, getFacebookPhotos]).then(function (results) {
-    var data = results[0];
+    var data = results[0][0];
+    data.titles = results[0][1];
     data.signupgenius = results[1];
     data.facebook = results[2];
     data.photos = results[3];

@@ -66,6 +66,8 @@ var EditableField = function (config) {
     h1s.map((h1) => {
       var h1ID = h1.textContent.toLowerCase();
       var cleanId = h1ID.replace(/\s/g, '_');
+      cleanId = encodeURIComponent(cleanId);
+      console.log({cleanId: cleanId});
       h1.setAttribute('id', cleanId);
     });
     return {
