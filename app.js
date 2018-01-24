@@ -26,11 +26,15 @@ db.loadDatabase(function (err) {
       type: 'text'
     },
     {
+      title: 'call_to_action',
+      type: 'text'
+    },
+    {
       title: 'story1',
       type: 'fullHTML'
     },
     {
-      title: 'accomplishments',
+      title: 'side_bar',
       type: 'fullHTML'
     },
     {
@@ -38,16 +42,28 @@ db.loadDatabase(function (err) {
       type: 'fullHTML'
     },
     {
-      title: 'students_went_on',
+      title: 'side_bar2',
+      type: 'fullHTML'
+    },
+    {
+      title: 'story3',
+      type: 'fullHTML'
+    },
+    {
+      title: 'side_bar3',
       type: 'fullHTML'
     }
   ];
   // check for req fields and add them if needed
-  reqFields.map(function (field) {
+  reqFields.map(function (field, i) {
     db.find({ title: field.title }, function (err, docs) {
       if (docs.length < 1) {
         db.insert(field);
       }
+    });
+    db.find({ title: field.title }, function (err, docs) {
+      docs[0].order = i + 2;
+      db.update({ title: field.title }, docs[0]);
     });
   });
 });

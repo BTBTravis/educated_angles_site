@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
   });
 });
 router.get('/editor', function(req, res, next) {
-  req.db.find({}, function (err, docs) {
+  req.db.find({}).sort({order: 1}).exec(function (err, docs) {
     // docs = docs.reduce(function (arr, doc) {
 
     //   obj[doc.title] = doc;

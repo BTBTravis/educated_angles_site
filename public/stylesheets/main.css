@@ -36,7 +36,7 @@ header{
   margin-left: 15px;
 } */
 .fb-link i{
-  color: #EE4266;
+  color: #3fbaa5;
 }
 .fb-link:hover i{
   color: inherit;
@@ -65,8 +65,8 @@ header{
   position: relative;
 }
 .media-boxes > div:hover{
-  border-bottom: 5px solid #EE4266;
-  background: #EE4266;
+  border-bottom: 5px solid #3fbaa5;
+  background: #3fbaa5;
 }
 .color-overlay{
   position: absolute;
@@ -174,7 +174,7 @@ header{
 .events-container a{
   color: white;
   font-size: 15px;
-  background: #EE4266;
+  background: #3fbaa5;
   padding: 3px 5px;
   border-radius: 5px;
   text-decoration: none;
@@ -214,7 +214,7 @@ header{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #EE4266;
+  background-color: #3fbaa5;
   opacity: 0;
   transition: opacity .3s;
   display: flex;
