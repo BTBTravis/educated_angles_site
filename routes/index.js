@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var getCMSData = new Promise((resolve, reject) => {
-    req.db.find({}, function (err, docs) {
+    req.db.find({}).sort({order: 1}).exec(function (err, docs) {
       let htmls = docs.reduce(function (obj, doc) {
         obj[doc.title] = doc.html;
         return obj;

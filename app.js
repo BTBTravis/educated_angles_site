@@ -56,14 +56,21 @@ db.loadDatabase(function (err) {
   ];
   // check for req fields and add them if needed
   reqFields.map(function (field, i) {
-    db.find({ title: field.title }, function (err, docs) {
-      if (docs.length < 1) {
-        db.insert(field);
-      }
-    });
-    db.find({ title: field.title }, function (err, docs) {
-      docs[0].order = i + 2;
-      db.update({ title: field.title }, docs[0]);
+    (function () {
+      return new Promise(function(resolve, reject) {
+        db.find({ title: field.title }, function (err, docs) {
+          if (docs.length < 1) {
+            db.insert(field, function () {
+              resolve();
+            });
+          }
+        });
+      });
+    })().then(function(){
+      db.find({ title: field.title }, function (err, docs) {
+        docs[0].order = i + 2;
+        db.update({ title: field.title }, docs[0]);
+      });
     });
   });
 });

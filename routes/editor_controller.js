@@ -92,45 +92,6 @@ router.get('/update', function (req, res, next) {
   .catch(function (e) {
     console.log({e: e});
   });
-  // FB.api(
-  //   '/educatedangels?fields=albums.fields(photos.fields(source))',
-  //   'GET',
-  //   { 'time_filter': 'upcoming' },
-  //   function (response) {
-  //     var photos = response.albums.data[0].photos.data;
-  //     photos.map(function(photo){
-  //       axios({
-  //         method: 'get',
-  //         url: photo.source,
-  //         responseType: 'stream'
-  //       })
-  //       .then(function(response) {
-  //         // response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'));
-  //         var params = {Bucket: 'educated-angles', Key: photo.id, Body: response.data};
-  //         s3.upload(params, function(err, data) {
-  //           console.log(err, data);
-  //         });
-  //         var urlParams = {Bucket: 'educated-angles', Key: photo.id};
-  //         s3.getSignedUrl('getObject', urlParams, function(err, url){
-  //           console.log('the url of the image is', url);
-  //         });
-  //       });
-  //     });
-
-      // console.log({photos: photos});
-      // photos.map(function (pic) {
-      //   console.log(pic);
-      // });
-      // req.eventdb.remove({ event_type: 'facebook' }, { multi: true });
-      // response.data.map(function (evt) {
-      //   evt.event_type = 'facebook';
-      //   evt.month = moment(evt.start_time).format('MMM');
-      //   evt.day = moment(evt.start_time).format('D');
-      //   evt.unix = moment(evt.start_time).format('X');
-      //   req.eventdb.insert(evt);
-      // });
-  //   }
-  // );
 
   res.json({ status: 200 });
 });
