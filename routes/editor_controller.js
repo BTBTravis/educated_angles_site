@@ -1,5 +1,4 @@
 var express = require('express');
-// require('dotenv').config();
 var axios = require('axios');
 var moment = require('moment');
 var router = express.Router();
@@ -8,15 +7,7 @@ var AWS = require('aws-sdk');
 var s3 = new AWS.S3();
 
 FB.setAccessToken(process.env.FACEBOOK_KEY);
-/* GET users listing. */
-router.put('/', function (req, res, next) {
-  req.body.map(function (field) {
-    req.db.update({ title: field.title }, { $set: { delta: field.delta, html: field.html } }, { multi: true }, function (err, numReplaced) {
-      // TODO: add error handling
-    });
-  });
-  res.json({ status: 200 });
-});
+
 router.get('/update', function (req, res, next) {
   // update signupgenius events
   axios.get('https://api.signupgenius.com/v2/k/signups/created/active/?user_key=' + process.env.SIGNUPGENIUS_KEY)

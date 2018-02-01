@@ -17,28 +17,27 @@
         <a href='#{{title[0]}}'>{{title[1]}}</a>
         {% endfor %}
         </div>
-        <a href='#' class='fb-link'><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href='https://www.facebook.com/educatedangels' class='fb-link'><i class="fa fa-facebook" aria-hidden="true"></i></a>
       </div>
     </header>
     <div class='media-boxes'>
-      <div id='box1' style='background-image: url(images/plane.png)' >
+      {% for card in homepagecards %}
+      <div class="box {{card.size[0]}}" style='background-image: url({{card.featuredImage}})' >
         <div class="color-overlay"></div>
-        <p class='title'>Helping folks in Houston</p>
+        <p class='title'>{{card.title.rendered}}</p>
+        <div class='content'>{{card.content.rendered}}</div>
       </div>
-      <div id='box2' style='background-image: url(images/video_thumb.png)'>
-        <div class="color-overlay"></div>
-        <p class='title'>2017 Summery Video</p>
-      </div>
-      <div id='box3' style='background-image: url(images/boxes.png)'>
-      <a href='#get_in_touch'>
-        <div class="color-overlay"></div>
-        <p class='title'>Get in touch</p>
-      </a>
-      </div>
+      {% endfor %}
     </div>
     <div class='call-to-action'>
-      <h1>{{call_to_action}}</h1>
-      <div class="fb-like" data-href="https://www.facebook.com/educatedangels" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>  
+      <h1>{{calltoaction}}</h1>
+      <form style="display: inline;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="LZG96QVPMYGA4">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+      </form>
+
     </div>
     <div class='events-container'>
       <h1 id='upcoming_events'>Upcoming Events</h1>
@@ -96,39 +95,29 @@
       </ul>
     </div>
 
+    {% for section in sections %}
+
     <div class='story-wrapper'>
-      <div class='story-bg'  style='background-image: url("images/ppl_bg.png")'></div>
-      <div class='story'>{{story1}}</div>
+      <div class='story-bg'  style='background-image: url("{{section.featuredImage}}")'></div>
+      <div class='story'>{{section.body_content}}</div>
       <div class='story-sidebar'>
-        {{side_bar}}
+        {{section.sidebar}}
       </div>
     </div>
 
-    <div class='story-wrapper'>
-      <div class='story-bg'  style='background-image: url("images/classroom.png")'></div>
-      <div class='story'>{{story2}}</div>
-      <div class='story-sidebar'>
-        {{side_bar2}}
-      </div>
-    </div>
-
-    <div class='story-wrapper'>
-      <div class='story-bg'  style='background-image: url("images/classroom.png")'></div>
-      <div class='story'>{{story3}}</div>
-      <div class='story-sidebar'>
-        {{side_bar3}}
-      </div>
-    </div>
+    {% endfor %}
 
     <footer>
       <div>
         <div>
           <div class='logo'><img src='images/logo.png'></div>
-          <p><strong>Educated Angles</strong></p>
+          <p><strong>Educated Angels</strong></p>
         </div>
         
-        <p><strong>Phone:</strong>  254-462-7712</p>
-        <p><strong>Email:</strong>  educatedangles2012@gmail.com</p>
+        <p><strong>Phone:</strong> 254-462-7712</p>
+        <p><strong>Email:</strong> info@educatedangels.org</p>
+        <div class="fb-like" data-href="https://www.facebook.com/educatedangels" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>  
+
       </div>
     </footer>
 
@@ -153,6 +142,29 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113371589-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-113371589-1');
+    </script>
+    <script>
+      let boxes = Array.from(document.querySelectorAll('.media-boxes > div'));
+      boxes.map(function (el) {
+        let overlay = el.querySelector('.color-overlay');
+        var content = el.querySelector('.content');
+        overlay.addEventListener('click', function (e) {
+          content.classList.add('active');
+        }); 
+        content.addEventListener('click', function (e) {
+          content.classList.remove('active');
+        }); 
+      });
+    </script>
+
   </body>
 </html>
 
