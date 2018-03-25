@@ -8,7 +8,8 @@ let fullPathImages = function (res) {
   res.data.entries = res.data.entries.map(entry => {
     imgKeys.map(key => {
       //api/cockpit/image?token=xxtokenxx&src=path&w=200&h=200&o=true
-      if(entry.hasOwnProperty(key)) entry[key] = (process.env.CMS_PATH.substring(0, process.env.CMS_PATH.length - 4)) + entry[key].path;
+      //if(entry.hasOwnProperty(key)) entry[key] = (process.env.CMS_PATH.substring(0, process.env.CMS_PATH.length - 4)) + entry[key].path;
+      if(entry.hasOwnProperty(key)) entry[key] = entry[key].path;
     });
     return entry;
   });
