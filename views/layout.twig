@@ -22,15 +22,15 @@
     </header>
     <div class='media-boxes'>
       {% for card in homepagecards %}
-      <div class="box {{card.size[0]}}" style='background-image: url({{card.featuredImage}})' >
+      <div class="box" style='background-image: url({{card.background_image}})' >
         <div class="color-overlay"></div>
-        <p class='title'>{{card.title.rendered}}</p>
-        <div class='content'>{{card.content.rendered}}</div>
+        <p class='title'>{{card.title}}</p>
+        <div class='content'>{{card.body}}</div>
       </div>
       {% endfor %}
     </div>
     <div class='call-to-action'>
-      <h1>{{calltoaction}}</h1>
+      <h1>Support Educated Angles Today</h1>
       <form style="display: inline;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
         <input type="hidden" name="cmd" value="_s-xclick">
         <input type="hidden" name="hosted_button_id" value="LZG96QVPMYGA4">
@@ -95,13 +95,13 @@
       </ul>
     </div>
 
-    {% for section in sections %}
+    {% for i, section in sections %}
 
-    <div class='story-wrapper'>
-      <div class='story-bg'  style='background-image: url("{{section.featuredImage}}")'></div>
+        <div id="section_{{i}}" class='story-wrapper'>
+      <div class='story-bg'  style='background-image: url("{{section.background_image}}")'></div>
       <div class='story'>{{section.body_content}}</div>
       <div class='story-sidebar'>
-        {{section.sidebar}}
+        {{section.sidebar_content}}
       </div>
     </div>
 

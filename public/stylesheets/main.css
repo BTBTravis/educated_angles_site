@@ -89,7 +89,7 @@ header{
   /* background: #383D3B; */
   opacity: 1;
 }
-.media-boxes .big{
+.media-boxes div:first-of-type {
   grid-row: 1/3;
 }
 .media-boxes .content{
