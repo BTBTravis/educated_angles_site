@@ -1,8 +1,6 @@
-# README #
+# Educated Angles Website
 
-Website educatedangles.org
-
-### Tech ###
+### Tech
 
 * node js
 * express.js
@@ -15,8 +13,9 @@ Website educatedangles.org
 * nedb - flatfile db
 * quill
 
-### Intergratoins ###
+### Intergratoins
 
+* cockpit cms
 * signupgenius events
 * facebook events
 * facebook photos
