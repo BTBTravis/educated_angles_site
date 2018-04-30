@@ -1,20 +1,20 @@
-var express = require('express');
+import express from 'express';
+import axios from 'axios';
+
 var router = express.Router();
-var axios = require('axios');
-//util functions
+
 let fullPathImages = function (res) {
   let imgKeys = [];
   for(var key in res.data.fields) if(res.data.fields[key].type === 'image') imgKeys.push(key);
   res.data.entries = res.data.entries.map(entry => {
     imgKeys.map(key => {
-      //api/cockpit/image?token=xxtokenxx&src=path&w=200&h=200&o=true
-      //if(entry.hasOwnProperty(key)) entry[key] = (process.env.CMS_PATH.substring(0, process.env.CMS_PATH.length - 4)) + entry[key].path;
-      if(entry.hasOwnProperty(key)) entry[key] = entry[key].path;
+      if(entry.hasOwnProperty(key)) entry[key] = (process.env.CMS_PATH.substring(0, process.env.CMS_PATH.length - 4)) + entry[key].path;
     });
     return entry;
   });
   return res;
 }
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   var getCMSData = axios.get(process.env.CMS_PATH + 'collections/get/home_page_sections?token=' + process.env.CMS_TOKEN)
