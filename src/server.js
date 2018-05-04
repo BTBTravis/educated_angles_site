@@ -1,4 +1,4 @@
-import genServer from '../app';
+import genServer from './app';
 import http from 'http';
 
 var app = genServer();

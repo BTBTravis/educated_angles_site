@@ -5,28 +5,14 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import Datastore from 'nedb';
 
-import index from './routes/index';
-import updateController from './routes/update_controller';
+import index from './controllers/index';
 
 //load env
 if (process.env.NODE_ENV !== 'production') {
   dotenv.load();
 }
 
-// load databases
-var eventdb = new Datastore({ filename: './dbs/events' });
-eventdb.loadDatabase();
-var photosdb = new Datastore({ filename: './dbs/photos' });
-photosdb.loadDatabase();
-
-function attachDB (name, dbOBJ) {
-  return function (req, res, next) {
-    req[name] = dbOBJ;
-    next();
-  };
-};
 
 //express setup
 export default function genServer() {
@@ -39,11 +25,8 @@ export default function genServer() {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use(attachDB('eventdb', eventdb));
-  app.use(attachDB('photosdb', photosdb));
 
   app.use('/', index);
-  app.use('/update', updateController);
 
   // catch 404 and forward to error handler
   app.use(function(req, res, next) {

@@ -12,6 +12,7 @@ let cockpit = createCockpitAPI({
     cockpitToken: process.env.COCKPIT_TOKEN
   }
 });
+
 let signupGenius = createSignupGeniusAPI({
   axios: axios,
   moment: moment,
@@ -23,20 +24,20 @@ let signupGenius = createSignupGeniusAPI({
 /* GET home page. */
 router.get('/', function (req, res, next) {
 
-  Promise.all([cockpit.getEvents(), cockpit.getHomePageSections(), cockpit.getHomePageCards()]).then(function (results) {
-    var data = {};
-    data.sections = results[0].sections;
-    data.titles = results[0].titles;
-    data.signupgenius = results[1];
-    data.facebook = results[2];
-    data.photos = results[3];
-    data.calltoaction = results[4];
-    data.homepagecards = results[5];
-    res.render('index', data);
-  }).catch(function (e) {
-    console.log({error: e});
-  });
+  res("TEST");
 
+  //Promise.all([cockpit.getEvents(), cockpit.getHomePageSections(), cockpit.getHomePageCards(), signupGenius.getEvents()]).then(function (results) {
+    //var data = {
+      //events: results[1].sections,
+      //titles: results[1].titles,
+      //signupgenius: results[3],
+      //facebook: results[0],
+      //homepagecards: results[2]
+    //};
+    //res.render('index', data);
+  //}).catch(function (e) {
+    //console.log({error: e});
+  //});
 });
 
 module.exports = router;
