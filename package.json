@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "dev": "webpack --watch --mode development",
-    "build": "webpack"
+    "build": "webpack --mode production",
+    "test-watch": "mocha dist/tests/*.js --watch",
+    "test": "mocha dist/tests/*.js"
   },
   "dependencies": {
     "aws-sdk": "^2.181.0",
