@@ -1,3 +1,5 @@
 node_modules
 .env
 dbs
+yarn-error.log
+dist
