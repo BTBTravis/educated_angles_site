@@ -16,4 +16,6 @@ RUN npm install
 COPY . .
 
 EXPOSE 3000
-CMD [ "env", "NODE_ENV=production", "node", "./bin/www" ]
+ENV NODE_ENV=production
+
+CMD npm run start

@@ -1,6 +1,10 @@
 import dotenv from 'dotenv';
-const result = dotenv.config();
-if (result.error) {
-  throw result.error;
+if(process.env.NODE_ENV !== 'production') {
+  const result = dotenv.config();
+  if (result.error) {
+    throw result.error;
+  }
+  //console.log(result.parsed);
 }
-//console.log(result.parsed);
+
+
