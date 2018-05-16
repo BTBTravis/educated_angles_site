@@ -5,14 +5,14 @@ export default (services) => {
     for(var key in res.data.fields) if(res.data.fields[key].type === 'image') imgKeys.push(key);
     res.data.entries = res.data.entries.map(entry => {
       imgKeys.map(key => {
-        if(entry.hasOwnProperty(key)) entry[key].path = (services.env.cockpitPath.substring(0, services.env.cockpitPath.length - 5)) + entry[key].path;
+        if(entry.hasOwnProperty(key)) entry[key].path = process.env.COCKPIT_IMG_PATH + entry[key].path;
       });
       return entry;
     });
     return res;
   }
 
-  let getHomePageSections = () => services.axios(services.env.cockpitPath + 'collections/get/home_page_sections?token=' + services.env.cockpitToken)
+  let getHomePageSections = () => services.axios(process.env.COCKPIT_PATH + 'collections/get/home_page_sections?token=' + process.env.COCKPIT_TOKEN)
     .then(res => {
       return fullPathImages(res);
     })
@@ -34,8 +34,9 @@ export default (services) => {
       //};
     //});
 
-  let getHomePageCards = () => services.axios.get(services.env.cockpitPath + 'collections/get/home_page_cards?token=' + services.env.cockpitToken)
+  let getHomePageCards = () => services.axios.get(process.env.COCKPIT_PATH + 'collections/get/home_page_cards?token=' + process.env.COCKPIT_TOKEN)
     .then(res => {
+      console.log('res.data.entries: ', res.data.entries);
       return fullPathImages(res);
     })
     .then(function (cmsData) {
@@ -46,10 +47,17 @@ export default (services) => {
       //return [];
     //});
 
-  let getEvents = () => services.axios.get(services.env.cockpitPath + 'collections/get/events?token=' + services.env.cockpitToken)
+  let getEvents = () => services.axios.get(process.env.COCKPIT_PATH + 'collections/get/events?token=' + process.env.COCKPIT_TOKEN)
     .then(function (cmsData) {
       return cmsData.data.entries;
     })
+    .then(events => {
+      return events.map(evt => {
+        evt.month = services.moment(evt.date).format('MMM');
+        evt.day = services.moment(evt.date).format('D');
+        return evt;
+      });
+    });
     //.catch(e => {
       //// TODO: Alert
       //return [];

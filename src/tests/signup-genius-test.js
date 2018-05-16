@@ -20,6 +20,7 @@ let realServices = {
 };
 
 describe('SignUpGenius Module', function () {
+  this.timeout(30000);
   let signup = createSignupGeniusAPI(realServices);
   it('getEvents', () => {
     return signup.getEvents()

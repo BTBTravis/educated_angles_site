@@ -3,10 +3,13 @@ const path = require('path');
 module.exports = [
   {
     target: 'node',
-    entry: './src/server.js',
+    entry: {
+      server: './src/server.js',
+      config: './src/config.js'
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'ea-server.bundle.js'
+      filename: '[name].bundle.js'
     },
     module: {
       rules: [

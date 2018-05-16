@@ -7,25 +7,47 @@ import moment from 'moment';
 var router = express.Router();
 let cockpit = createCockpitAPI({
   axios: axios,
-  env: {
-    cockpitPath: process.env.COCKPIT_PATH,
-    cockpitToken: process.env.COCKPIT_TOKEN
-  }
+  moment: moment
 });
 
 let signupGenius = createSignupGeniusAPI({
   axios: axios,
-  moment: moment,
-  env: {
-    key: process.env.SIGNUPGENIUS_KEY
-  }
+  moment: moment
 });
 
+//router.get('/', (req, res, next) => {
+  //res.render('index', {
+    //titles: [['fuck', 'fuck']]
+  //});
+//});
+
+//let preloadData = Promise.all([cockpit.getEvents(), cockpit.getHomePageSections(), cockpit.getHomePageCards(), signupGenius.getEvents()])
+//let preloadData = Promise.all([signupGenius.getEvents()])
+//.then(data => {
+  //console.log('data: ', data);
+//})
+//.catch(e => console.log('error preloading data'));
+
+let preloadData = Promise.all([cockpit.getEvents(), cockpit.getHomePageSections(), cockpit.getHomePageCards(), signupGenius.getEvents()])
+  .then(results => {
+    var data = {
+      events: results[1].sections,
+      titles: results[1].titles,
+      signupgenius: results[3],
+      facebook: results[0],
+      homepagecards: results[2]
+    };
+
+    //console.log('data.homepagecards: ', data.homepagecards);
+    router.get('/', (req, res, next) => {
+      res.render('index', data);
+    });
+
+  })
+  .catch(e => console.log('error preloading data', e));
+
 /* GET home page. */
-router.get('/', function (req, res, next) {
-
-  res("TEST");
-
+//router.get('/', function (req, res, next) {
   //Promise.all([cockpit.getEvents(), cockpit.getHomePageSections(), cockpit.getHomePageCards(), signupGenius.getEvents()]).then(function (results) {
     //var data = {
       //events: results[1].sections,
@@ -38,6 +60,6 @@ router.get('/', function (req, res, next) {
   //}).catch(function (e) {
     //console.log({error: e});
   //});
-});
+//});
 
 module.exports = router;

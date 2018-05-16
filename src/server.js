@@ -4,8 +4,10 @@ import http from 'http';
 var app = genServer();
 
 // Get port from environment and store in Express.
+
 var port = process.env.PORT || '3000';
 app.set('port', port);
+console.log('port: ', port);
 
 // Create HTTP server.
 var server = http.createServer(app);

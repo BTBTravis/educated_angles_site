@@ -19,6 +19,7 @@ let realServices = {
 };
 
 describe('Cockpit Module', function () {
+  this.timeout(30000);
   let cockpit = createCockpitAPI(realServices);
 
   it('getHomePageSections', () => {

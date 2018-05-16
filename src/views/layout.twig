@@ -22,7 +22,7 @@
     </header>
     <div class='media-boxes'>
       {% for card in homepagecards %}
-      <div class="box" style='background-image: url({{card.background_image}})' >
+      <div class="box" style='background-image: url({{card.background_image.path}})' >
         <div class="color-overlay"></div>
         <p class='title'>{{card.title}}</p>
         <div class='content'>{{card.body}}</div>
@@ -49,7 +49,7 @@
             <p>{{event.day}}</p>
           </div>
           <div class='event-titles'>
-            <p>{{event.name}}</p>
+            <p>{{event.title}}</p>
             <p>by Educated Angles</p>
           </div>
           <div class='event-extra-info'>
@@ -58,7 +58,7 @@
             <p>{{event.place.location.city}}, {{event.place.location.state}}</p>
           {% endif %}
           </div>
-          <a href='https://www.facebook.com/events/{{event.id}}'>Learn More</a>
+          <a href='{{event.url}}'>Learn More</a>
         </li>
       {% endfor %}
       </ul>

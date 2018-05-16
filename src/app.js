@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
 import favicon from 'serve-favicon';
@@ -8,10 +7,6 @@ import bodyParser from 'body-parser';
 
 import index from './controllers/index';
 
-//load env
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.load();
-}
 
 
 //express setup
@@ -24,7 +19,8 @@ export default function genServer() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(express.static(path.join(__dirname, 'public')));
+  let publicPath = path.join(__dirname, 'public');
+  app.use(express.static(publicPath));
 
   app.use('/', index);
 

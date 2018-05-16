@@ -1,5 +1,5 @@
 export default (services) => {
-  let getEvents = () => services.axios.get('https://api.signupgenius.com/v2/k/signups/created/active/?user_key=' + services.env.key)
+  let getEvents = () => services.axios.get('https://api.signupgenius.com/v2/k/signups/created/active/?user_key=' + process.env.SIGNUPGENIUS_KEY)
     .then(function (response) {
       return response.data.data.map(function (evt) {
         evt.event_type = 'signupgenius';
@@ -8,7 +8,6 @@ export default (services) => {
         return evt;
       });
     });
-
   return {
     getEvents: getEvents
   }
