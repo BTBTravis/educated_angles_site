@@ -36,7 +36,6 @@ export default (services) => {
 
   let getHomePageCards = () => services.axios.get(process.env.COCKPIT_PATH + 'collections/get/home_page_cards?token=' + process.env.COCKPIT_TOKEN)
     .then(res => {
-      console.log('res.data.entries: ', res.data.entries);
       return fullPathImages(res);
     })
     .then(function (cmsData) {

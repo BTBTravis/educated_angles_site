@@ -31,14 +31,13 @@ let signupGenius = createSignupGeniusAPI({
 let preloadData = Promise.all([cockpit.getEvents(), cockpit.getHomePageSections(), cockpit.getHomePageCards(), signupGenius.getEvents()])
   .then(results => {
     var data = {
-      events: results[1].sections,
+      sections: results[1].sections,
       titles: results[1].titles,
       signupgenius: results[3],
       facebook: results[0],
       homepagecards: results[2]
     };
 
-    //console.log('data.homepagecards: ', data.homepagecards);
     router.get('/', (req, res, next) => {
       res.render('index', data);
     });
